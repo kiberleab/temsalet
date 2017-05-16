@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% load thumbnail %}
+
+{% block title %}News &amp; Events{% endblock %}
+
+{% block content %}
+
+
+<div class="container-fluid" style="padding: 0;">
+    <div class="our-story" style="background: #424242;padding: 200px 20% 20px; margin-bottom: 30px;">
+    	<p style="color: #fff; font-size: 18px;line-height: 24px;">News &amp; Events</p>
+    </div>
+</div>
+
+<div class="container">
+    {% for news in news %}
+        <div class="col-md-10 col-md-offset-1">
+        	<!--<p>{{ news.category}}</p>-->
+        	<p style="color: #464646;text-align: left;font-size: 36px;line-height: 44px;
+        	font-size: 24px;
+        	line-height: 30px;
+        	font-weight: 600;
+        	text-transform: capitalize;">{{ news.title }}</p>
+        	<p style="color: #898989;line-height: 24px;font-size: 15px;">{{ news.created|date:"D d M Y" }}</p>
+        	<div class="iimg" style="padding: 20px 0;">
+		        {% thumbnail news.image "820x400" crop="center" as im %}
+                    <img class="img-responsive" src="{{ im.url }}" width="{{im.width}}" height="{{im.height}}">
+                {% endthumbnail %}
+            </div>
+        	<p style="font-size: 18px;line-height: 30px;color: #898989;margin: 0px;">{{ news.detail }}</p>
+        	<hr>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

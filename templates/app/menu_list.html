@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}home{% endblock %}
+
+{% block content %}
+
+
+<div class="container-fluid" style="padding: 0;">
+    <div class="our-story" style="background: #424242;padding: 200px 20% 20px;margin-bottom: 30px;">
+    	<p style="color: #fff; font-size: 18px;line-height: 24px;">Our Menu</p>
+    </div>
+</div>
+
+<div class="container">
+	<div class="col-md-10 col-md-offset-1">
+	    <div class="m-wrapper" style="text-align: left;">
+	        <h2>Breakfast</h2>
+	        <hr>
+	        {% for menu in menus %}
+	            <h4>{{ menu.title }} - {{ menu.price }} Birr</h4> 
+	           <!-- <p>{{ menu.category }}</p> -->
+	            <p>{{ menu.description }}</p>
+	            <hr>
+	        {% endfor %}
+	        <h2>Lunch</h2>
+	        <hr>
+	        {% for menu in menus %}
+	            <h4>{{ menu.title }} - {{ menu.price }} Birr</h4> 
+	           <!-- <p>{{ menu.category }}</p> -->
+	            <p>{{ menu.description }}</p>
+	            <hr>
+	        {% endfor %}
+	    </div>
+	</div>
+</div>
+
+{% endblock %}

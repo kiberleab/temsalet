@@ -1,0 +1,40 @@
+{% load static %}
+
+{% load thumbnail %}
+
+{% for event in latest_event %}
+    <div class="col-sm-4 col-md-4">
+            <div class="thumbnail" style="border: transparent;padding: 15px;">
+                {% thumbnail event.image "320x220" crop="center" as im %}
+                    <img class="img-responsive" src="{{ im.url }}" width="{{im.width}}" height="{{im.height}}">
+                {% endthumbnail %}
+                <div class="caption">
+                    <p style="font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 14px;
+    color: #464646;
+     margin-bottom: 10px!important;">{{ event.title }}</p>
+                    <p style="margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: 0 0;
+    margin-bottom: 20px!important;
+    line-height: 24px;
+    font-size: 16px;
+    color: #464646;
+    text-align: center;">{{ event.sub_title|truncatewords:13 }}</p>
+    <span class="tbutton" style="display: block;margin: 0;padding: 0;border: 0;outline: 0;vertical-align: baseline;background: 0 0;margin-top: 30px;margin-bottom: 20px;text-align: center;">
+                    <a href="{% url 'app:newsevent_list' %}" style="padding: 15px 20px; border:2px solid #839531; color: #898989; border-radius: 25px; font-size: 14px; text-transform: uppercase;border-color: rgba(137,137,137,.5);display: inline-block;
+    position: relative;">find out more &raquo;</a>
+                </span>
+                  
+                </div>
+            </div>
+    </div>
+{% endfor %}
+
